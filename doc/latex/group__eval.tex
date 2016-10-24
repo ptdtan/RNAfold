@@ -1,0 +1,60 @@
+\hypertarget{group__eval}{}\section{Free Energy Evaluation for given Sequence / Structure Pairs}
+\label{group__eval}\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+
+
+This module contains all functions and variables related to energy evaluation of sequence/structure pairs.  
+
+
+\subsection*{Files}
+\begin{DoxyCompactItemize}
+\item 
+file \hyperlink{eval_8h}{eval.\+h}
+\begin{DoxyCompactList}\small\item\em Functions and variables related to energy evaluation of sequence/structure pairs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{group__eval_gad3b92453a6b501856eec8fae39f3235d}{vrna\+\_\+eval\+\_\+ext\+\_\+hp\+\_\+loop} (\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$vc, int i, int j)\hypertarget{group__eval_gad3b92453a6b501856eec8fae39f3235d}{}\label{group__eval_gad3b92453a6b501856eec8fae39f3235d}
+
+\begin{DoxyCompactList}\small\item\em Evaluate free energy of an exterior hairpin loop. \end{DoxyCompactList}\item 
+int \hyperlink{group__eval_gab3eb4651dc26dc2b653a57dd340d7e68}{vrna\+\_\+eval\+\_\+hp\+\_\+loop} (\hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$vc, int i, int j)
+\begin{DoxyCompactList}\small\item\em Evaluate free energy of a hairpin loop. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This module contains all functions and variables related to energy evaluation of sequence/structure pairs. 
+
+
+
+\subsection{Function Documentation}
+\index{Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}!vrna\+\_\+eval\+\_\+hp\+\_\+loop@{vrna\+\_\+eval\+\_\+hp\+\_\+loop}}
+\index{vrna\+\_\+eval\+\_\+hp\+\_\+loop@{vrna\+\_\+eval\+\_\+hp\+\_\+loop}!Free Energy Evaluation for given Sequence / Structure Pairs@{Free Energy Evaluation for given Sequence / Structure Pairs}}
+\subsubsection[{\texorpdfstring{vrna\+\_\+eval\+\_\+hp\+\_\+loop(vrna\+\_\+fold\+\_\+compound\+\_\+t $\ast$vc, int i, int j)}{vrna_eval_hp_loop(vrna_fold_compound_t *vc, int i, int j)}}]{\setlength{\rightskip}{0pt plus 5cm}int vrna\+\_\+eval\+\_\+hp\+\_\+loop (
+\begin{DoxyParamCaption}
+\item[{{\bf vrna\+\_\+fold\+\_\+compound\+\_\+t} $\ast$}]{vc, }
+\item[{int}]{i, }
+\item[{int}]{j}
+\end{DoxyParamCaption}
+)}\hypertarget{group__eval_gab3eb4651dc26dc2b653a57dd340d7e68}{}\label{group__eval_gab3eb4651dc26dc2b653a57dd340d7e68}
+
+
+{\ttfamily \#include $<$\hyperlink{hairpin__loops_8h}{Vienna\+R\+N\+A/hairpin\+\_\+loops.\+h}$>$}
+
+
+
+Evaluate free energy of a hairpin loop. 
+
+\begin{DoxyNote}{Note}
+This function is polymorphic! The provided \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} may be of type \hyperlink{group__fold__compound_gga01a4ff86fa71deaaa5d1abbd95a1447da1608d3aa78905fc39e0d25a624ac9512}{V\+R\+N\+A\+\_\+\+V\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+S\+I\+N\+G\+LE} or \hyperlink{group__fold__compound_gga01a4ff86fa71deaaa5d1abbd95a1447da056345f1bcfe7cd595d1fd437c05246d}{V\+R\+N\+A\+\_\+\+V\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+A\+L\+I\+G\+N\+M\+E\+NT}
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em vc} & The \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t} for the particular energy evaluation \\
+\hline
+{\em i} & 5\textquotesingle{}-\/position of the base pair \\
+\hline
+{\em j} & 3\textquotesingle{}-\/position of the base pair \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Free energy of the hairpin loop closed by $ (i,j) $ in deka-\/kal/mol 
+\end{DoxyReturn}

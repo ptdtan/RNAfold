@@ -1,0 +1,92 @@
+\form#0:$\ldots$
+\form#1:$ \ldots $
+\form#2:$ 1- $
+\form#3:$ i $
+\form#4:$ j $
+\form#5:$ k $
+\form#6:$ [i:j] $
+\form#7:$ [k:l] $
+\form#8:$ i-j $
+\form#9:$ k-l $
+\form#10:$ (i,j), \ldots, (i+(k-1), j-(k-1)) $
+\form#11:$ p \in [i:j] $
+\form#12:$ q \in [k:l] $
+\form#13:$ (i,j) $
+\form#14:$ (p,q) $
+\form#15:$ i < p < j < q $
+\form#16:$ p < i < q < j $
+\form#17:$ E_{ij} $
+\form#18:\[ E_{ij} = \min \left[ \max_{(i,k) \in \{GC, CG, AU, UA, GU, UG\}} E_{ik}, \max_{(k,j) \in \{GC, CG, AU, UA, GU, UG\}} E_{kj} \right]. \]
+\form#19:$ e $
+\form#20:$ kcal / mol $
+\form#21:$Q$
+\form#22:$G = -RT \cdot \log(Q) $
+\form#23:$q1k(k) = Q(1, k)$
+\form#24:$qln(l) = Q(l, n)$
+\form#25:$ p(i,j) = S_i + S_j - p_ij*ln(p_ij) $
+\form#26:$ <d(S)> = \sum_{(i,j) \in S} (1-p_{ij}) + \sum_{(i,j) \notin S} p_{ij} $
+\form#27:$p_ij>0.5$
+\form#28:$(i,j)$
+\form#29:$(k,l)$
+\form#30:$[i:j]$
+\form#31:$[i:k]$
+\form#32:$[l:j]$
+\form#33:$[k:l]$
+\form#34:$(l,j)$
+\form#35:$(i,k)$
+\form#36:$(l,j-1)$
+\form#37:$ d < 0 $
+\form#38:$ d > 0 $
+\form#39:$ d == 0 $
+\form#40:\[ \Delta G_{\text{SHAPE}}(i) = m \ln(\text{SHAPE reactivity}(i)+1)+ b \]
+\form#41:$ m $
+\form#42:$ b $
+\form#43:$ q_i $
+\form#44:\[ \Delta G_{\text{SHAPE}}(x,i) = \beta\ |x_i - q_i| \]
+\form#45:$ x_i=0 $
+\form#46:$ x_i=1 $
+\form#47:$ \beta $
+\form#48:$ |x_i - q_i| $
+\form#49:$ \hat{E} $
+\form#50:$ dacal/mol $
+\form#51:$ 1 dacal/mol = 10 cal/mol $
+\form#52:$ exp(- \hat{E} / kT) $
+\form#53:$ E $
+\form#54:$ cal/mol $
+\form#55:$<d> = \sum_{a,b} p_a p_b d(S_a,S_b)$
+\form#56:$p_ij$
+\form#57:$<d> = \sum_{ij} p_{ij}(1-p_{ij})$
+\form#58:$(i+1, j-1)$
+\form#59:$ p > \textrm{cutoff} $
+\form#60:$ p $
+\form#61:$ \ge 1 $
+\form#62:$ \rightarrow $
+\form#63:$\Sigma$
+\form#64:$ \Sigma = \{A,U,C,G\} $
+\form#65:$\mathrm{strlen}(\mathrm{sequence})+1$
+\form#66:$e^{-\Delta G/kT} $
+\form#67:$\Delta G$
+\form#68:$(n+m)$
+\form#69:$-kT \cdot \log(p)$
+\form#70:$p$
+\form#71:$k_d = 0.32 \mu mol / l $
+\form#72:$10^{-2} * \mathrm{kcal}/\mathrm{mol}$
+\form#73:\[ A(S) = \sum_{(i,j) \in S} 2 \gamma p_{ij} + \sum_{i \notin S} p^u_i \]
+\form#74:$\gamma$
+\form#75:$ exp(-E / (b \cdot kT))$
+\form#76:$exp{((-F/kT)/length)}$
+\form#77:$F$
+\form#78:$ exp(-E / kT) $
+\form#79:$s$
+\form#80:$\hat{q}[i,j] = q[i,j] / s^{(j-i+1)}$
+\form#81:$ s = exp((sfact * MFE) / kT / length )$
+\form#82:$ exp(-\Delta G / kT) $
+\form#83:$ e^{-E/(\alpha \cdot K \cdot T)} $
+\form#84:$ F(\vec\epsilon) = \sum_{i = 1}^n{ \frac{\epsilon_i^2}{\tau^2} } + \sum_{i = 1}^n{ \frac{(p_i(\vec\epsilon) - q_i)^2}{\sigma^2} } \to min $
+\form#85:$ F(\vec\epsilon) = \sum_{i = 1}^n{ \frac{|\epsilon_i|}{\tau^2} } + \sum_{i = 1}^n{ \frac{|p_i(\vec\epsilon) - q_i|}{\sigma^2} } \to min $
+\form#86:\[ F(\vec\epsilon) = \sum_{\mu}{ \frac{\epsilon_{\mu}^2}{\tau^2} } + \sum_{i = 1}^n{ \frac{(p_i(\vec\epsilon) - q_i)^2}{\sigma^2} } \to \min. \]
+\form#87:$P^t$
+\form#88:$rs$
+\form#89:$[0,1]$
+\form#90:$ P^{t}_x[i] = X[i] * rs$
+\form#91:$P^{t}_y[i] = Y[i] * rs$

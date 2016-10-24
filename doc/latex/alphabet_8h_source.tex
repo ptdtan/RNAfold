@@ -1,0 +1,55 @@
+\hypertarget{alphabet_8h_source}{}\section{alphabet.\+h}
+\label{alphabet_8h_source}\index{Vienna\+R\+N\+A/alphabet.\+h@{Vienna\+R\+N\+A/alphabet.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef VIENNA\_RNA\_PACKAGE\_ALPHABET\_H}
+00002 \textcolor{preprocessor}{#define VIENNA\_RNA\_PACKAGE\_ALPHABET\_H}
+00003 
+00004 \textcolor{comment}{/* make this interface backward compatible with RNAlib < 2.2.0 */}
+00005 \textcolor{preprocessor}{#define VRNA\_BACKWARD\_COMPAT}
+00006 
+00007 \textcolor{preprocessor}{#ifdef DEPRECATION\_WARNINGS}
+00008 \textcolor{preprocessor}{# ifdef \_\_GNUC\_\_}
+00009 \textcolor{preprocessor}{#  define DEPRECATED(func) func \_\_attribute\_\_ ((deprecated))}
+00010 \textcolor{preprocessor}{# else}
+00011 \textcolor{preprocessor}{#  define DEPRECATED(func) func}
+00012 \textcolor{preprocessor}{# endif}
+00013 \textcolor{preprocessor}{#else}
+00014 \textcolor{preprocessor}{# define DEPRECATED(func) func}
+00015 \textcolor{preprocessor}{#endif}
+00016 
+00026 \textcolor{preprocessor}{#include <\hyperlink{model_8h}{ViennaRNA/model.h}>}
+00027 
+00028 \textcolor{keywordtype}{int} vrna\_nucleotide\_IUPAC\_identity(\textcolor{keywordtype}{char} a, \textcolor{keywordtype}{char} b);
+00029 
+00039 \textcolor{keywordtype}{char}  *\hyperlink{alphabet_8h_a51a9e86a5f731f5f2f5584ee67cee4a8}{vrna\_ptypes}( \textcolor{keyword}{const} \textcolor{keywordtype}{short} *S,
+00040                     \hyperlink{group__model__details_structvrna__md__s}{vrna\_md\_t} *md);
+00041 
+00046 \textcolor{keywordtype}{short} *\hyperlink{alphabet_8h_a636e7d6f888fd639587296a5eddea660}{vrna\_seq\_encode}( \textcolor{keyword}{const} \textcolor{keywordtype}{char} *sequence,
+00047                         \hyperlink{group__model__details_structvrna__md__s}{vrna\_md\_t} *md);
+00048 
+00053 \textcolor{keywordtype}{short} *\hyperlink{alphabet_8h_a3cd79d21d53248ad2634c1c0d43e97d7}{vrna\_seq\_encode\_simple}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *sequence,
+00054                               \hyperlink{group__model__details_structvrna__md__s}{vrna\_md\_t} *md);
+00055 
+00067 \textcolor{keywordtype}{int} \hyperlink{alphabet_8h_ac12bf00123f88621c9be847b0879c1fb}{vrna\_nucleotide\_encode}( \textcolor{keywordtype}{char} c,
+00068                             \hyperlink{group__model__details_structvrna__md__s}{vrna\_md\_t} *md);
+00069 
+00081 \textcolor{keywordtype}{char} \hyperlink{alphabet_8h_a48ef585e697be9c8a08ed68c655e29b6}{vrna\_nucleotide\_decode}(\textcolor{keywordtype}{int} enc,
+00082                             \hyperlink{group__model__details_structvrna__md__s}{vrna\_md\_t} *md);
+00083 
+00084 \textcolor{keywordtype}{void} vrna\_aln\_encode( \textcolor{keyword}{const} \textcolor{keywordtype}{char} *sequence,
+00085                       \textcolor{keywordtype}{short} **S\_p,
+00086                       \textcolor{keywordtype}{short} **s5\_p,
+00087                       \textcolor{keywordtype}{short} **s3\_p,
+00088                       \textcolor{keywordtype}{char} **ss\_p,
+00089                       \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} **as\_p,
+00090                       \hyperlink{group__model__details_structvrna__md__s}{vrna\_md\_t} *md);
+00091 
+00096 \textcolor{preprocessor}{#ifdef  VRNA\_BACKWARD\_COMPAT}
+00097 
+00098 DEPRECATED(\textcolor{keywordtype}{char}  *get\_ptypes(\textcolor{keyword}{const} \textcolor{keywordtype}{short} *S, \hyperlink{group__model__details_structvrna__md__s}{vrna\_md\_t} *md, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} idx\_type));
+00099 
+00100 \textcolor{preprocessor}{#endif}
+00101 
+00102 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

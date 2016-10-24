@@ -1,0 +1,50 @@
+\hypertarget{file__formats__msa_8h_source}{}\section{file\+\_\+formats\+\_\+msa.\+h}
+\label{file__formats__msa_8h_source}\index{Vienna\+R\+N\+A/file\+\_\+formats\+\_\+msa.\+h@{Vienna\+R\+N\+A/file\+\_\+formats\+\_\+msa.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef VIENNA\_RNA\_PACKAGE\_FILE\_FORMATS\_MSA\_H}
+00002 \textcolor{preprocessor}{#define VIENNA\_RNA\_PACKAGE\_FILE\_FORMATS\_MSA\_H}
+00003 
+00014 \textcolor{preprocessor}{#include <stdio.h>}
+00015 
+\hypertarget{file__formats__msa_8h_source.tex_l00020}{}\hyperlink{group__file__utils_ga79a23de2c7249f2cccd762e475c81859}{00020} \textcolor{preprocessor}{#define VRNA\_FILE\_FORMAT\_MSA\_CLUSTAL      1U}
+00021 
+\hypertarget{file__formats__msa_8h_source.tex_l00026}{}\hyperlink{group__file__utils_ga62be992445cd8ab2ad7a8fded944338b}{00026} \textcolor{preprocessor}{#define VRNA\_FILE\_FORMAT\_MSA\_STOCKHOLM    2U}
+00027 
+\hypertarget{file__formats__msa_8h_source.tex_l00032}{}\hyperlink{group__file__utils_gacf6274a2c825f34e4131404665b00604}{00032} \textcolor{preprocessor}{#define VRNA\_FILE\_FORMAT\_MSA\_FASTA        4U}
+00033 
+\hypertarget{file__formats__msa_8h_source.tex_l00038}{}\hyperlink{group__file__utils_gab3186d774c01570d2a47d0308eec4927}{00038} \textcolor{preprocessor}{#define VRNA\_FILE\_FORMAT\_MSA\_MAF          8U}
+00039 
+\hypertarget{file__formats__msa_8h_source.tex_l00044}{}\hyperlink{group__file__utils_ga4acc255373831856a8417b68de8a94c0}{00044} \textcolor{preprocessor}{#define VRNA\_FILE\_FORMAT\_MSA\_DEFAULT      ( \(\backslash\)}
+00045 \textcolor{preprocessor}{                                              VRNA\_FILE\_FORMAT\_MSA\_CLUSTAL \(\backslash\)}
+00046 \textcolor{preprocessor}{                                            | VRNA\_FILE\_FORMAT\_MSA\_STOCKHOLM \(\backslash\)}
+00047 \textcolor{preprocessor}{                                            | VRNA\_FILE\_FORMAT\_MSA\_FASTA \(\backslash\)}
+00048 \textcolor{preprocessor}{                                            | VRNA\_FILE\_FORMAT\_MSA\_MAF \(\backslash\)}
+00049 \textcolor{preprocessor}{                                          )}
+00050 
+\hypertarget{file__formats__msa_8h_source.tex_l00055}{}\hyperlink{group__file__utils_ga229fb3778ecabea4782902b69fa48fd1}{00055} \textcolor{preprocessor}{#define VRNA\_FILE\_FORMAT\_MSA\_NOCHECK      4096U}
+00056 
+\hypertarget{file__formats__msa_8h_source.tex_l00061}{}\hyperlink{group__file__utils_gabdc948f547e550125de3e7c65878400c}{00061} \textcolor{preprocessor}{#define VRNA\_FILE\_FORMAT\_MSA\_UNKNOWN      8192U}
+00062 
+00109 \textcolor{keywordtype}{int}
+00110 \hyperlink{group__file__utils_gad02d5d12bda54611c915a1019323b7be}{vrna\_file\_msa\_read}( \textcolor{keyword}{const} \textcolor{keywordtype}{char} *filename,
+00111                     \textcolor{keywordtype}{char} ***names,
+00112                     \textcolor{keywordtype}{char} ***aln,
+00113                     \textcolor{keywordtype}{char}  **\textcolor{keywordtype}{id},
+00114                     \textcolor{keywordtype}{char}  **structure,
+00115                     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} options);
+00116 
+00167 \textcolor{keywordtype}{int}
+00168 \hyperlink{group__file__utils_gad4203a438622b2df7bc2f16578d54799}{vrna\_file\_msa\_read\_record}(FILE *fp,
+00169                           \textcolor{keywordtype}{char} ***names,
+00170                           \textcolor{keywordtype}{char} ***aln,
+00171                           \textcolor{keywordtype}{char}  **\textcolor{keywordtype}{id},
+00172                           \textcolor{keywordtype}{char}  **structure,
+00173                           \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} options);
+00174 
+00200 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}
+00201 \hyperlink{group__file__utils_gade4fa8136ebb2d0f7eb3f8b59a8658e3}{vrna\_file\_msa\_detect\_format}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *filename,
+00202                             \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} options);
+00203 
+00208 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

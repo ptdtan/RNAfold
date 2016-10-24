@@ -1,0 +1,150 @@
+Notes on functions and structures wrapped to the scripting language interface(s)\hypertarget{scripting_scripting_intro}{}\section{Introduction}\label{scripting_scripting_intro}
+For an easy integration into scripting languages, we provide an automatically generated interface to the R\+N\+Alib C-\/library, generated with scripting.\hypertarget{scripting_scripting_renaming}{}\subsection{Function renaming scheme}\label{scripting_scripting_renaming}
+The main difference when using a scripting language interface compared to direct calls of R\+N\+Alib C functions is, that the prefix \textquotesingle{}vrna\+\_\+\textquotesingle{} is dropped. For instance, when calling the \hyperlink{group__mfe__fold__single_ga29a33b2895f4e67b0480271ff289afdc}{vrna\+\_\+fold()} function, corresponding calls in perl or python are R\+N\+A\+::fold(), and R\+N\+A.\+fold(), respectively.
+
+Functions that are dedicated to work on specific data structures only, e.\+g. the \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t}, are usually not exported at all. Instead, they are attached as object methods of a corresponding class (see \hyperlink{scripting_scripting_oo_interface}{Object oriented Interface for data structures} for detailed information).\hypertarget{scripting_scripting_oo_interface}{}\subsection{Object oriented Interface for data structures}\label{scripting_scripting_oo_interface}
+For data structures, typedefs, and enumerations the \textquotesingle{}vrna\+\_\+\textquotesingle{} prefixes are dropped as well, together with their suffixes \textquotesingle{}\+\_\+s\textquotesingle{}, \textquotesingle{}\+\_\+t\textquotesingle{}, and \textquotesingle{}\+\_\+e\textquotesingle{}, respectively. Furthermore, data structures are usually transformed into classes and relevant functions of the C-\/library are attached as methods.\hypertarget{scripting_scripting_examples}{}\section{Examples}\label{scripting_scripting_examples}
+\hypertarget{scripting_scripting_perl_examples}{}\subsection{Perl Examples}\label{scripting_scripting_perl_examples}
+\hypertarget{scripting_scripting_perl_examples_flat}{}\subsubsection{Using the Flat Interface}\label{scripting_scripting_perl_examples_flat}
+Example 1\+: \char`\"{}\+Simple M\+F\+E prediction\char`\"{} 
+\begin{DoxyCodeInclude}
+00001 #!/usr/bin/perl
+00002 
+00003 use warnings;
+00004 use strict;
+00005 
+00006 use RNA;
+00007 
+00008 my $seq1 = "CGCAGGGAUACCCGCG";
+00009 
+00010 # compute minimum free energy (mfe) and corresponding structure
+00011 my ($ss, $mfe) = RNA::fold($seq1);
+00012 
+00013 # print output
+00014 printf "%s [ %6.2f ]\(\backslash\)n", $ss, $mfe;
+\end{DoxyCodeInclude}
+\hypertarget{scripting_scripting_perl_examples_oo}{}\subsubsection{Using the Object Oriented (\+O\+O) Interface}\label{scripting_scripting_perl_examples_oo}
+The \textquotesingle{}fold\+\_\+compound\textquotesingle{} class that serves as an object oriented interface for \hyperlink{group__fold__compound_ga1b0cef17fd40466cef5968eaeeff6166}{vrna\+\_\+fold\+\_\+compound\+\_\+t}
+
+Example 1\+: \char`\"{}\+Simple M\+F\+E prediction\char`\"{} 
+\begin{DoxyCodeInclude}
+00001 #!/usr/bin/perl
+00002 
+00003 use warnings;
+00004 use strict;
+00005 
+00006 use RNA;
+00007 
+00008 my $seq1 = "CGCAGGGAUACCCGCG";
+00009 
+00010 # create new fold\_compound object
+00011 my $fc = new RNA::fold\_compound($seq1);
+00012 
+00013 # compute minimum free energy (mfe) and corresponding structure
+00014 my ($ss, $mfe) = $fc->mfe();
+00015 
+00016 # print output
+00017 printf "%s [ %6.2f ]\(\backslash\)n", $ss, $mfe;
+\end{DoxyCodeInclude}
+\hypertarget{scripting_scripting_python_examples}{}\subsection{Python Examples}\label{scripting_scripting_python_examples}
+\hypertarget{scripting_scripting_wrappers}{}\section{How functions, structures, enums, and macro definitions are wrapped}\label{scripting_scripting_wrappers}
+
+\begin{DoxyRefList}
+\item[\label{scripting__scripting000005}%
+\hypertarget{scripting__scripting000005}{}%
+Global \hyperlink{group__energy__parameters_gad607bc3a5b5da16400e2ca4ea5560233}{vrna\+\_\+exp\+\_\+params\+\_\+rescale} (vrna\+\_\+fold\+\_\+compound\+\_\+t $\ast$vc, double $\ast$mfe)]This function is attached to \hyperlink{group__fold__compound_structvrna__fc__s}{vrna\+\_\+fc\+\_\+s} objects as overloaded {\bfseries exp\+\_\+params\+\_\+rescale()} method.
+
+When no parameter is passed to this method, the resulting action is the same as passing {\itshape N\+U\+LL} as second parameter to \hyperlink{group__energy__parameters_gad607bc3a5b5da16400e2ca4ea5560233}{vrna\+\_\+exp\+\_\+params\+\_\+rescale()}, i.\+e. default scaling of the partition function. Passing an energy in kcal/mol, e.\+g. as retrieved by a previous call to the {\itshape mfe()} method, instructs all subsequent calls to scale the partition function accordingly.  
+\item[\label{scripting__scripting000007}%
+\hypertarget{scripting__scripting000007}{}%
+Global \hyperlink{group__energy__parameters_gaa5409218068be84d7b50c78fbdaa85a9}{vrna\+\_\+exp\+\_\+params\+\_\+reset} (vrna\+\_\+fold\+\_\+compound\+\_\+t $\ast$vc, vrna\+\_\+md\+\_\+t $\ast$md\+\_\+p)]This function is attached to \hyperlink{group__fold__compound_structvrna__fc__s}{vrna\+\_\+fc\+\_\+s} objects as overloaded {\bfseries exp\+\_\+params\+\_\+reset()} method.
+
+When no parameter is passed to this method, the resulting action is the same as passing {\itshape N\+U\+LL} as second parameter to \hyperlink{group__energy__parameters_gaa5409218068be84d7b50c78fbdaa85a9}{vrna\+\_\+exp\+\_\+params\+\_\+reset()}, i.\+e. global default model settings are used. Passing an object of type \hyperlink{group__model__details_structvrna__md__s}{vrna\+\_\+md\+\_\+s} resets the fold compound according to the specifications stored within the \hyperlink{group__model__details_structvrna__md__s}{vrna\+\_\+md\+\_\+s} object.  
+\item[\label{scripting__scripting000004}%
+\hypertarget{scripting__scripting000004}{}%
+Global \hyperlink{group__energy__parameters_ga8e7ac4fab3b0cc03afbc134eaafb3525}{vrna\+\_\+exp\+\_\+params\+\_\+subst} (vrna\+\_\+fold\+\_\+compound\+\_\+t $\ast$vc, vrna\+\_\+exp\+\_\+param\+\_\+t $\ast$params)]This function is attached to \hyperlink{group__fold__compound_structvrna__fc__s}{vrna\+\_\+fc\+\_\+s} objects as {\bfseries exp\+\_\+params\+\_\+subst()} method.  
+\item[\label{scripting__scripting000001}%
+\hypertarget{scripting__scripting000001}{}%
+Class \hyperlink{group__fold__compound}{vrna\+\_\+fc\+\_\+s} ]
+
+This data structure is wrapped as an object {\bfseries fold\+\_\+compound} with several related functions attached as methods.
+
+A new {\bfseries fold\+\_\+compound} can be obtained by calling one of its constructors\+:~\newline
+
+\begin{DoxyItemize}
+\item {\itshape fold\+\_\+compound(seq)} -- Initialize with a single sequence, or two concatenated sequences separated by an ampersand character \textquotesingle{}\&\textquotesingle{} (for cofolding)
+\item {\itshape fold\+\_\+compound(aln)} -- Initialize with a sequence alignment {\itshape aln} stored as a list of sequences (with gap characters)
+\end{DoxyItemize}The resulting object has a list of attached methods which in most cases directly correspond to functions that mainly operate on the corresponding {\itshape C} data structure\+:~\newline
+
+\begin{DoxyItemize}
+\item {\itshape \hyperlink{group__fold__compound_ac5eab693deac9a1a40c2a95ac294707c}{type()}} -- Get the type of the {\itshape fold\+\_\+compound} (See \hyperlink{group__fold__compound_ga01a4ff86fa71deaaa5d1abbd95a1447d}{vrna\+\_\+fc\+\_\+type\+\_\+e})
+\item {\itshape \hyperlink{group__fold__compound_a95fbfed770b858e50c766505dc4bf998}{length()}} -- Get the length of the sequence(s) or alignment stored within the {\itshape fold\+\_\+compound} 
+\end{DoxyItemize}
+\item[\label{scripting__scripting000002}%
+\hypertarget{scripting__scripting000002}{}%
+Class \hyperlink{group__model__details}{vrna\+\_\+md\+\_\+s} ]This data structure is wrapped as an object {\bfseries md} with multiple related functions attached as methods.
+
+A new set of default parameters can be obtained by calling the constructure of {\bfseries md\+:} ~\newline
+
+\begin{DoxyItemize}
+\item {\itshape md()} -- Initialize with default settings
+\end{DoxyItemize}
+
+The resulting object has a list of attached methods which directly correspond to functions that mainly operate on the corresponding {\itshape C} data structure\+:~\newline
+
+\begin{DoxyItemize}
+\item {\itshape reset()} -- \hyperlink{group__model__details_ga8ac6ff84936282436f822644bf841f66}{vrna\+\_\+md\+\_\+set\+\_\+default()}
+\item {\itshape set\+\_\+from\+\_\+globals()} -- \hyperlink{group__model__details_gabad896c3650d420f3f3ddefc69e2bceb}{set\+\_\+model\+\_\+details()}
+\item {\itshape option\+\_\+string()} -- \hyperlink{group__model__details_ga3a7469f0725a849af6ba61a57dfd60ce}{vrna\+\_\+md\+\_\+option\+\_\+string()}
+\end{DoxyItemize}
+
+Note, that default parameters can be modified by directly setting any of the following global variables. Internally, getting/setting default parameters using their global variable representative translates into calls of the following functions, therefore these wrappers for these functions do not exist in the scripting language interface(s)\+:
+
+\tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*3{|X[-1]}|}
+\hline
+\rowcolor{\tableheadbgcolor}{\bf global variable }&{\bf {\itshape C} getter }&{\bf {\itshape C} setter  }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\rowcolor{\tableheadbgcolor}{\bf global variable }&{\bf {\itshape C} getter }&{\bf {\itshape C} setter  }\\\cline{1-3}
+\endhead
+temperature &\hyperlink{group__model__details_ga96b24a74437f9ba46c4e06343155bf46}{vrna\+\_\+md\+\_\+defaults\+\_\+temperature\+\_\+get()} &\hyperlink{group__model__details_gaf9e527e9a2f7e6fd6e42bc6e602f5445}{vrna\+\_\+md\+\_\+defaults\+\_\+temperature()} \\\cline{1-3}
+dangles &\hyperlink{group__model__details_ga67ca06f95ae133778c79a4493c9817b8}{vrna\+\_\+md\+\_\+defaults\+\_\+dangles\+\_\+get()} &\hyperlink{group__model__details_gac76a5374def8e5e4e644ff6e4cc72dee}{vrna\+\_\+md\+\_\+defaults\+\_\+dangles()} \\\cline{1-3}
+beta\+Scale &\hyperlink{group__model__details_gabb8780f5410c52f970d75b044059bd09}{vrna\+\_\+md\+\_\+defaults\+\_\+beta\+Scale\+\_\+get()} &\hyperlink{group__model__details_gae984567db36c3f9b8731ecc917abf3a2}{vrna\+\_\+md\+\_\+defaults\+\_\+beta\+Scale()} \\\cline{1-3}
+tetra\+\_\+loop &this is an alias of {\itshape special\+\_\+hp} &\\\cline{1-3}
+special\+\_\+hp &\hyperlink{group__model__details_ga1d68a6efdaa1253cc63fd9cd06452559}{vrna\+\_\+md\+\_\+defaults\+\_\+special\+\_\+hp\+\_\+get()} &\hyperlink{group__model__details_gafff6449a02744add0308e653230c15fc}{vrna\+\_\+md\+\_\+defaults\+\_\+special\+\_\+hp()} \\\cline{1-3}
+no\+Lonely\+Pairs &this is an alias of {\itshape no\+LP} &\\\cline{1-3}
+no\+LP &\hyperlink{group__model__details_ga934344888fbacaed538bbbfe910f2aa6}{vrna\+\_\+md\+\_\+defaults\+\_\+no\+L\+P\+\_\+get()} &\hyperlink{group__model__details_ga2f88ffc393ac9d7987849c965fd29ea8}{vrna\+\_\+md\+\_\+defaults\+\_\+no\+L\+P()} \\\cline{1-3}
+no\+GU &\hyperlink{group__model__details_ga5faa7d4e536d7fe36ec25428c0cf2563}{vrna\+\_\+md\+\_\+defaults\+\_\+no\+G\+U\+\_\+get()} &\hyperlink{group__model__details_ga98218f85c7a957a1d1ddf4627fdf5a39}{vrna\+\_\+md\+\_\+defaults\+\_\+no\+G\+U()} \\\cline{1-3}
+no\+\_\+closing\+GU &this is an alias of {\itshape no\+G\+Uclosure} &\\\cline{1-3}
+no\+G\+Uclosure &\hyperlink{group__model__details_ga4f7fdad083243a5348d63320ddaa70f3}{vrna\+\_\+md\+\_\+defaults\+\_\+no\+G\+Uclosure\+\_\+get()} &\hyperlink{group__model__details_gade5b9951d71ca2fb357a4e6c0c18ccd1}{vrna\+\_\+md\+\_\+defaults\+\_\+no\+G\+Uclosure()} \\\cline{1-3}
+log\+ML &\hyperlink{group__model__details_ga93f04e070d529c5d0bb87c9681f6ad29}{vrna\+\_\+md\+\_\+defaults\+\_\+log\+M\+L\+\_\+get()} &\hyperlink{group__model__details_ga3de50a73455d88c3957386933b8e1f90}{vrna\+\_\+md\+\_\+defaults\+\_\+log\+M\+L()} \\\cline{1-3}
+circ &\hyperlink{group__model__details_gad3a7e58de344ad93a08925f58f94f6fb}{vrna\+\_\+md\+\_\+defaults\+\_\+circ\+\_\+get()} &\hyperlink{group__model__details_ga4e1deb3e91a8a99e5c6dd905a5eb0186}{vrna\+\_\+md\+\_\+defaults\+\_\+circ()} \\\cline{1-3}
+gquad &\hyperlink{group__model__details_gae645b8612f879eb38b45244fa9eddb9e}{vrna\+\_\+md\+\_\+defaults\+\_\+gquad\+\_\+get()} &\hyperlink{group__model__details_ga0685ca2aeb39af76f2421fc308163dce}{vrna\+\_\+md\+\_\+defaults\+\_\+gquad()} \\\cline{1-3}
+uniq\+\_\+\+ML &\hyperlink{group__model__details_gab48e70fd024bf838404bcbcca0c874a0}{vrna\+\_\+md\+\_\+defaults\+\_\+uniq\+\_\+\+M\+L\+\_\+get()} &\hyperlink{group__model__details_ga59b944f61c5d2babec2d4c48c820de67}{vrna\+\_\+md\+\_\+defaults\+\_\+uniq\+\_\+\+M\+L()} \\\cline{1-3}
+energy\+\_\+set &\hyperlink{group__model__details_ga017ed6afb1cba2b7f242412cab618b53}{vrna\+\_\+md\+\_\+defaults\+\_\+energy\+\_\+set\+\_\+get()} &\hyperlink{group__model__details_ga8dd29c55787a4576277e1907e92d810c}{vrna\+\_\+md\+\_\+defaults\+\_\+energy\+\_\+set()} \\\cline{1-3}
+backtrack &\hyperlink{group__model__details_ga90da1156e6883ddd68527c2830706648}{vrna\+\_\+md\+\_\+defaults\+\_\+backtrack\+\_\+get()} &\hyperlink{group__model__details_ga978c468b2fe96a70d5191e3dd17d5599}{vrna\+\_\+md\+\_\+defaults\+\_\+backtrack()} \\\cline{1-3}
+backtrack\+\_\+type &\hyperlink{group__model__details_ga1425b4ebd0e034dead66d79becd64143}{vrna\+\_\+md\+\_\+defaults\+\_\+backtrack\+\_\+type\+\_\+get()} &\hyperlink{group__model__details_ga68305274de96b56b7799575e222560d8}{vrna\+\_\+md\+\_\+defaults\+\_\+backtrack\+\_\+type()} \\\cline{1-3}
+do\+\_\+backtrack &this is an alias of {\itshape compute\+\_\+bpp} &\\\cline{1-3}
+compute\+\_\+bpp &\hyperlink{group__model__details_gaa3a537e61fbe0518673bf9f73fd820f3}{vrna\+\_\+md\+\_\+defaults\+\_\+compute\+\_\+bpp\+\_\+get()} &\hyperlink{group__model__details_gaf1b5db10f1f476767f9a95f8a78e3132}{vrna\+\_\+md\+\_\+defaults\+\_\+compute\+\_\+bpp()} \\\cline{1-3}
+max\+\_\+bp\+\_\+span &\hyperlink{group__model__details_gaa60f989e062fecd4d4bac89c1883da85}{vrna\+\_\+md\+\_\+defaults\+\_\+max\+\_\+bp\+\_\+span\+\_\+get()} &\hyperlink{group__model__details_ga4c4bc962f09b4480cb8499f1cf8ae4ec}{vrna\+\_\+md\+\_\+defaults\+\_\+max\+\_\+bp\+\_\+span()} \\\cline{1-3}
+min\+\_\+loop\+\_\+size &\hyperlink{group__model__details_ga5cc691174a75c652807dc361b617632a}{vrna\+\_\+md\+\_\+defaults\+\_\+min\+\_\+loop\+\_\+size\+\_\+get()} &\hyperlink{group__model__details_gac152f1e78c1058a10261022c8dfda0f7}{vrna\+\_\+md\+\_\+defaults\+\_\+min\+\_\+loop\+\_\+size()} \\\cline{1-3}
+window\+\_\+size &\hyperlink{group__model__details_ga670146a9aa3ba77f4d422d60b7c30ac9}{vrna\+\_\+md\+\_\+defaults\+\_\+window\+\_\+size\+\_\+get()} &\hyperlink{group__model__details_ga7b802ce0e8c3181bf5cb580de6d5b26a}{vrna\+\_\+md\+\_\+defaults\+\_\+window\+\_\+size()} \\\cline{1-3}
+old\+Ali\+En &\hyperlink{group__model__details_ga2374492b5019df88022fe4c05f0f3630}{vrna\+\_\+md\+\_\+defaults\+\_\+old\+Ali\+En\+\_\+get()} &\hyperlink{group__model__details_ga41521d5b9fb7e0f31e7ea73f5792afab}{vrna\+\_\+md\+\_\+defaults\+\_\+old\+Ali\+En()} \\\cline{1-3}
+ribo &\hyperlink{group__model__details_ga169027f0c0561ea7d87b655e4b336bfc}{vrna\+\_\+md\+\_\+defaults\+\_\+ribo\+\_\+get()} &\hyperlink{group__model__details_ga937c45e1d06fd6168730a9b08d130be3}{vrna\+\_\+md\+\_\+defaults\+\_\+ribo()} \\\cline{1-3}
+cv\+\_\+fact &\hyperlink{group__model__details_gae59c68393807217b0a2497adb64d3ee3}{vrna\+\_\+md\+\_\+defaults\+\_\+cv\+\_\+fact\+\_\+get()} &\hyperlink{group__model__details_gad3a3f40baafd91a6ce80a91a68e20053}{vrna\+\_\+md\+\_\+defaults\+\_\+cv\+\_\+fact()} \\\cline{1-3}
+nc\+\_\+fact &\hyperlink{group__model__details_ga7ac759eaa7159bf5f022745f5da59508}{vrna\+\_\+md\+\_\+defaults\+\_\+nc\+\_\+fact\+\_\+get()} &\hyperlink{group__model__details_gac35e596c850dce3ad55c49119fd7d471}{vrna\+\_\+md\+\_\+defaults\+\_\+nc\+\_\+fact()} \\\cline{1-3}
+sfact &\hyperlink{group__model__details_gab2df6aab954b63fd3592d18e90285dae}{vrna\+\_\+md\+\_\+defaults\+\_\+sfact\+\_\+get()} &\hyperlink{group__model__details_ga3f73d3029d3d0025d4cc311510cd95a3}{vrna\+\_\+md\+\_\+defaults\+\_\+sfact()} \\\cline{1-3}
+\end{longtabu}
+
+\item[\label{scripting__scripting000006}%
+\hypertarget{scripting__scripting000006}{}%
+Global \hyperlink{group__energy__parameters_gac40dc82e48a72a97cfc58b9da08a7792}{vrna\+\_\+params\+\_\+reset} (vrna\+\_\+fold\+\_\+compound\+\_\+t $\ast$vc, vrna\+\_\+md\+\_\+t $\ast$md\+\_\+p)]This function is attached to \hyperlink{group__fold__compound_structvrna__fc__s}{vrna\+\_\+fc\+\_\+s} objects as overloaded {\bfseries params\+\_\+reset()} method.
+
+When no parameter is passed to this method, the resulting action is the same as passing {\itshape N\+U\+LL} as second parameter to \hyperlink{group__energy__parameters_gac40dc82e48a72a97cfc58b9da08a7792}{vrna\+\_\+params\+\_\+reset()}, i.\+e. global default model settings are used. Passing an object of type \hyperlink{group__model__details_structvrna__md__s}{vrna\+\_\+md\+\_\+s} resets the fold compound according to the specifications stored within the \hyperlink{group__model__details_structvrna__md__s}{vrna\+\_\+md\+\_\+s} object.  
+\item[\label{scripting__scripting000003}%
+\hypertarget{scripting__scripting000003}{}%
+Global \hyperlink{group__energy__parameters_ga5d1909208f7ea3baa98b75afaa1f62ca}{vrna\+\_\+params\+\_\+subst} (vrna\+\_\+fold\+\_\+compound\+\_\+t $\ast$vc, vrna\+\_\+param\+\_\+t $\ast$par)]This function is attached to \hyperlink{group__fold__compound_structvrna__fc__s}{vrna\+\_\+fc\+\_\+s} objects as {\bfseries params\+\_\+subst()} method. 
+\end{DoxyRefList}

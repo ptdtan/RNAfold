@@ -1,0 +1,40 @@
+\hypertarget{equilibrium__probs_8h_source}{}\section{equilibrium\+\_\+probs.\+h}
+\label{equilibrium__probs_8h_source}\index{Vienna\+R\+N\+A/equilibrium\+\_\+probs.\+h@{Vienna\+R\+N\+A/equilibrium\+\_\+probs.\+h}}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef VIENNA\_RNA\_PACKAGE\_EQUILIBRIUM\_PROBS\_H}
+00002 \textcolor{preprocessor}{#define VIENNA\_RNA\_PACKAGE\_EQUILIBRIUM\_PROBS\_H}
+00003 
+00004 \textcolor{comment}{/* make this interface backward compatible with RNAlib < 2.2.0 */}
+00005 \textcolor{preprocessor}{#define VRNA\_BACKWARD\_COMPAT}
+00006 
+00007 \textcolor{preprocessor}{#include <\hyperlink{data__structures_8h}{ViennaRNA/data\_structures.h}>}
+00008 
+00009 \textcolor{preprocessor}{#ifdef DEPRECATION\_WARNINGS}
+00010 \textcolor{preprocessor}{# ifdef \_\_GNUC\_\_}
+00011 \textcolor{preprocessor}{#  define DEPRECATED(func) func \_\_attribute\_\_ ((deprecated))}
+00012 \textcolor{preprocessor}{# else}
+00013 \textcolor{preprocessor}{#  define DEPRECATED(func) func}
+00014 \textcolor{preprocessor}{# endif}
+00015 \textcolor{preprocessor}{#else}
+00016 \textcolor{preprocessor}{# define DEPRECATED(func) func}
+00017 \textcolor{preprocessor}{#endif}
+00018 
+00030 \textcolor{comment}{/*}
+00031 \textcolor{comment}{#################################################}
+00032 \textcolor{comment}{# BASE PAIR PROBABILITY RELATED FUNCTIONS       #}
+00033 \textcolor{comment}{#################################################}
+00034 \textcolor{comment}{*/}
+00035 
+00036 \textcolor{keywordtype}{void}  vrna\_pairing\_probs(\hyperlink{group__fold__compound_structvrna__fc__s}{vrna\_fold\_compound\_t} *vc, \textcolor{keywordtype}{char} *structure);
+00037 
+00051 \textcolor{keywordtype}{double} \hyperlink{group__pf__fold_gad3f0c240512e6d43e2e4d4c2076021f5}{vrna\_mean\_bp\_distance\_pr}(\textcolor{keywordtype}{int} length, \hyperlink{group__data__structures_ga31125aeace516926bf7f251f759b6126}{FLT\_OR\_DBL} *
+      \hyperlink{fold__vars_8h_ac98ec419070aee6831b44e5c700f090f}{pr});
+00052 
+00065 \textcolor{keywordtype}{double} \hyperlink{group__pf__fold_gaa6b8983b559b9ef4b2e1b31113ea317b}{vrna\_mean\_bp\_distance}(\hyperlink{group__fold__compound_structvrna__fc__s}{vrna\_fold\_compound\_t} *vc);
+00066 
+00079 \hyperlink{group__data__structures_structvrna__plist__s}{vrna\_plist\_t} *\hyperlink{group__pf__fold_ga26e3cc2eb127a35625572e9275c24ee4}{vrna\_stack\_prob}(\hyperlink{group__fold__compound_structvrna__fc__s}{vrna\_fold\_compound\_t} *vc, \textcolor{keywordtype}{
+      double} cutoff);
+00080 
+00081 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}
